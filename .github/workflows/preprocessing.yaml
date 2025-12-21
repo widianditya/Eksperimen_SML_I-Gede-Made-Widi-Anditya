@@ -15,5 +15,7 @@ jobs:
           python-version: '3.12.7'
       - name: Install dependencies
         run: pip install pandas scikit-learn
+      - name: Check Folder Structure
+        run: ls -R  # menampilkan semua file di log Actions
       - name: Run automation
         run: python preprocessing/automate_i-gede-made-widi-anditya.py 
