@@ -17,4 +17,4 @@ jobs:
       - name: Install dependencies
         run: pip install pandas scikit-learn
       - name: Run automation
-        run: python preprocessing/automate_I-Gede-Made-Widi-Anditya.py # Pastikan nama file .py sudah benar
+        run: python preprocessing/automate_I-Gede-Made-Widi-Anditya.py 
