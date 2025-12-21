@@ -2,8 +2,7 @@ name: Heart Preprocessing Advance
 
 on:
   push:
-    paths:
-      - 'namadataset_raw/**' # Trigger jika ada perubahan pada dataset mentah
+    branches: [ "main" ] # Gunakan ini agar setiap push memicu workflow
 
 jobs:
   preprocess_job:
@@ -17,4 +16,4 @@ jobs:
       - name: Install dependencies
         run: pip install pandas scikit-learn
       - name: Run automation
-        run: python preprocessing/automate_I-Gede-Made-Widi-Anditya.py # Pastikan nama file .py sudah benar
+        run: python preprocessing/automate_I-Gede-Made-Widi-Anditya.py
