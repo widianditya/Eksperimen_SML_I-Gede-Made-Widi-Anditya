@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
 import os
+import shutil
 
 # Ambil token dari environment variable jika tersedia
 token = os.getenv("DAGSHUB_USER_TOKEN")
@@ -24,7 +25,7 @@ dagshub.init(repo_owner=REPO_OWNER, repo_name=REPO_NAME, mlflow=True)
 mlflow.set_tracking_uri(f"https://dagshub.com/{REPO_OWNER}/{REPO_NAME}.mlflow")
 
 # 2. Load Data
-df = pd.read_csv('namadataset_preprocessing/cleaned_heart.csv')
+df = pd.read_csv('Membangun_model/namadataset_preprocessing/cleaned_heart.csv')
 df.columns = df.columns.str.strip().str.lower()
 
 X = df.drop('target', axis=1)
@@ -75,6 +76,18 @@ with mlflow.start_run(run_name="Optimized_RandomForest_90Percent"):
 
     # Log Model
     mlflow.sklearn.log_model(best_model, "best_heart_model")
+    
+    # 1. Tentukan lokasi folder model di dalam direktori lokal
+    model_path_lokal = "Membangun_model/best_heart_model"
+
+    # 2. Hapus folder jika sudah ada (mencegah error 'Directory already exists')
+    if os.path.exists(model_path_lokal):
+        shutil.rmtree(model_path_lokal)
+
+    # 3. Simpan model secara fisik ke folder lokal
+    mlflow.sklearn.save_model(sk_model=best_model, path=model_path_lokal)
+    
+    print(f"Model fisik berhasil disimpan di: {model_path_lokal}")
 
     print(f"Selesai! Akurasi terbaik yang didapat: {acc:.4f}")
     print(f"Parameter terbaik: {grid_search.best_params_}")
