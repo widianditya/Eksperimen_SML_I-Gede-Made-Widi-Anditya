@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Model Training and Logging to DagsHub
         env:
-          DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }} # Mengambil token dari GitHub Secrets
+          DAGSHUB_USER_TOKEN: ${{ secrets.DAGSHUB_TOKEN }} 
         run: |
           cd Membangun_model
           python modelling_tuning.py

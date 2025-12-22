@@ -6,6 +6,16 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
+import os
+
+# Ambil token dari environment variable jika tersedia
+token = os.getenv("DAGSHUB_USER_TOKEN")
+
+if token:
+    # Jika berjalan di GitHub Actions, gunakan token untuk login otomatis
+    os.environ['MLFLOW_TRACKING_USERNAME'] = token
+    os.environ['MLFLOW_TRACKING_PASSWORD'] = token
+    print("Berjalan di CI: Menggunakan DAGSHUB_USER_TOKEN untuk otentikasi.")
 
 # 1. Inisialisasi DagsHub
 REPO_OWNER = 'widianditya'
