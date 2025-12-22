@@ -1,0 +1,29 @@
+name: Model Training CI
+
+on:
+  push:
+    paths:
+      - 'Membangun_model/**' # Menjalankan workflow hanya jika ada perubahan di folder model
+
+jobs:
+  train_model:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.12.7
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.7'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas scikit-learn mlflow dagshub matplotlib seaborn
+
+      - name: Run Model Training and Logging to DagsHub
+        env:
+          DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }} # Mengambil token dari GitHub Secrets
+        run: |
+          cd Membangun_model
+          python modelling_tuning.py
