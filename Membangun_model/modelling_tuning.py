@@ -25,7 +25,7 @@ dagshub.init(repo_owner=REPO_OWNER, repo_name=REPO_NAME, mlflow=True)
 mlflow.set_tracking_uri(f"https://dagshub.com/{REPO_OWNER}/{REPO_NAME}.mlflow")
 
 # 2. Load Data
-df = pd.read_csv('Membangun_model/namadataset_preprocessing/cleaned_heart.csv')
+df = pd.read_csv('namadataset_preprocessing/cleaned_heart.csv')
 df.columns = df.columns.str.strip().str.lower()
 
 X = df.drop('target', axis=1)
