@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Lenovo/Documents/Dicoding/Eksperimen_SML_I-Gede-Made-Widi-Anditya/mlruns/0/f840d31158ce4c178f984cbd629b50fb/artifacts
+end_time: 1766453806252
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f840d31158ce4c178f984cbd629b50fb
+run_name: HeartDisease_Experiment
+run_uuid: f840d31158ce4c178f984cbd629b50fb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1766453800953
+status: 3
+tags: []
+user_id: Lenovo

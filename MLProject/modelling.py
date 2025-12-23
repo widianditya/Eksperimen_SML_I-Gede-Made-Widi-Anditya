@@ -9,7 +9,7 @@ import dagshub
 # 1. ATUR ALAMAT TRACKING KE LOCALHOST 
 if os.getenv('GITHUB_ACTIONS') == 'true':
     # JIKA DI GITHUB: Kirim data ke DagsHub
-    dagshub.init(repo_owner='widianditya', repo_name='Eksperimen_SML_I-Gede-Made-Widi-Anditya', setup=True)
+    dagshub.init(repo_owner='widianditya', repo_name='Eksperimen_SML_I-Gede-Made-Widi-Anditya', mlflow=True)
     mlflow.set_tracking_uri("https://dagshub.com/widianditya/Eksperimen_SML_I-Gede-Made-Widi-Anditya.mlflow")
 else:
     # JIKA DI LOKAL: Gunakan localhost
