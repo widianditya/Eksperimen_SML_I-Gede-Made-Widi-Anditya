@@ -25,5 +25,5 @@ jobs:
         env:
           DAGSHUB_USER_TOKEN: ${{ secrets.DAGSHUB_TOKEN }} 
         run: |
-          cd MLProject
+          cd MlProject
           python modelling.py
