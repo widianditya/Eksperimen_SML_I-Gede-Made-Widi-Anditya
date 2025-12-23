@@ -3,7 +3,7 @@ name: Model Training CI
 on:
   push:
     paths:
-      - 'MLProject/**' # Menjalankan workflow hanya jika ada perubahan di folder model
+      - 'MlProject/**' # Menjalankan workflow hanya jika ada perubahan di folder model
 
 jobs:
   train_model:
