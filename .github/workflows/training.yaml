@@ -2,8 +2,7 @@ name: Model Training CI
 
 on:
   push:
-    paths:
-      - 'MLProject/**'
+    branches: [ "main" ]
 
 jobs:
   train_model:
