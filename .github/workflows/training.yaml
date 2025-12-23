@@ -3,7 +3,7 @@ name: Model Training CI
 on:
   push:
     paths:
-      - 'MlProject/**' # Menjalankan workflow jika ada perubahan di folder model
+      - 'MLProject**'
 
 jobs:
   train_model:
@@ -25,5 +25,5 @@ jobs:
         env:
           DAGSHUB_USER_TOKEN: ${{ secrets.DAGSHUB_TOKEN }} 
         run: |
-          cd MlProject
+          cd MLProject
           python modelling.py
