@@ -3,10 +3,18 @@ import mlflow.sklearn
 from sklearn.ensemble import RandomForestClassifier # Contoh model Anda
 from sklearn.model_selection import train_test_split
 import pandas as pd
+import os
+import dagshub
 
 # 1. ATUR ALAMAT TRACKING KE LOCALHOST 
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
-
+if os.getenv('GITHUB_ACTIONS') == 'true':
+    # JIKA DI GITHUB: Kirim data ke DagsHub
+    dagshub.init(repo_owner='widianditya', repo_name='Eksperimen_SML_I-Gede-Made-Widi-Anditya', setup=True)
+    mlflow.set_tracking_uri("https://dagshub.com/widianditya/Eksperimen_SML_I-Gede-Made-Widi-Anditya.mlflow")
+else:
+    # JIKA DI LOKAL: Gunakan localhost
+    mlflow.set_tracking_uri("http://127.0.0.1:5000")
+    
 # 2. AKTIFKAN AUTOLOGGING
 mlflow.sklearn.autolog()
 
