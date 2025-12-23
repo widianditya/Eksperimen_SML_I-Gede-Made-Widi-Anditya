@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 import os
 import dagshub
+from sklearn.metrics import accuracy_score
 
 # 1. ATUR ALAMAT TRACKING KE LOCALHOST 
 if os.getenv('GITHUB_ACTIONS') == 'true':
@@ -32,5 +33,12 @@ with mlflow.start_run(run_name="HeartDisease_Experiment"):
     # Latih Model
     # Semua parameter, metrik, dan model akan dicatat OTOMATIS oleh autolog
     model.fit(X_train, y_train)
+    
+    # Hitung akurasi secara manual
+    y_pred = model.predict(X_test)
+    acc = accuracy_score(y_test, y_pred)
+
+    # Kirim metrik dengan nama 'accuracy' agar pas dengan kolom dashboard
+    mlflow.log_metric("accuracy", acc)
     
     print("Eksperimen selesai dan tercatat di MLflow.")
