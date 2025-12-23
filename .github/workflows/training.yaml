@@ -26,4 +26,4 @@ jobs:
           DAGSHUB_USER_TOKEN: ${{ secrets.DAGSHUB_TOKEN }} 
         run: |
           cd MLProject
-          python python modelling.py
+          python modelling.py
